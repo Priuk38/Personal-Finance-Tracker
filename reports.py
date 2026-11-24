@@ -35,19 +35,19 @@ def generate_monthly_report(data, month, year):
     total_income = sum(
         transaksi["nominal"]
         for transaksi in monthly_data
-        if transaksi["jenis"] == "pemasukan"
+        if transaksi["jenis"].lower() == "pemasukan"
     )
     total_expense = sum(
         transaksi["nominal"]
         for transaksi in monthly_data
-        if transaksi["jenis"] == "pengeluaran"
+        if transaksi["jenis"].lower() == "pengeluaran"
     )
 
     #Mengelompokkan pengeluaran berdasarkan kategori
     expense_breakdown = {}
 
     for transaksi in monthly_data:
-        if transaksi["jenis"] == "pengeluaran":
+        if transaksi["jenis"].lower() == "pengeluaran":
             kategori = transaksi["kategori"]
             if kategori not in expense_breakdown:
                 expense_breakdown[kategori] = 0
@@ -64,10 +64,7 @@ def generate_monthly_report(data, month, year):
 
     #Menghitung saving rate
     if total_income > 0:
-        saving_rate = (
-            (total_income - total_expense) 
-            / total_income
-        ) * 100
+        saving_rate = round(((total_income - total_expense) / total_income) * 100, 2)
     else:
         saving_rate = None
 

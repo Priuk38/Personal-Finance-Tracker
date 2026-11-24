@@ -1,8 +1,11 @@
 import csv
+import sys
 from pathlib import Path
 
-#Menentukan lokasi folder proyek
-BASE_DIR = Path(__file__).resolve().parent
+if getattr(sys, "frozen", False):
+    BASE_DIR = Path(sys.executable).resolve().parent
+else: 
+    BASE_DIR = Path(__file__).resolve().parent
 
 DATA_DIR = BASE_DIR / "data"
 EXPORT_DIR = BASE_DIR / "exports"
@@ -35,7 +38,7 @@ def load_transactions():
                 row["nominal"] = int(row["nominal"])
                 transactions.append(row)
             except (ValueError, KeyError, TypeError):
-                print("Peringatab: Ada baris CSV yang tidak valid.")
+                print("Peringatan: Ada baris CSV yang tidak valid.")
     return transactions
 
 def save_transactions(data):
@@ -75,7 +78,6 @@ def export_monthly_report(report):
         "saving_rate",
         "kategori_pengeluaran",
         "nominal_per_kategori",
-        "kategori_pengeluaran",
         "kategori_terbesar"
     ]
 
@@ -94,7 +96,7 @@ def export_monthly_report(report):
                 "total_pemasukan": report["total_pemasukan"],
                 "total_pengeluaran": report["total_pengeluaran"],
                 "saldo": report["saldo"],
-                "saving_rate": report["saving_rate"],
+                "saving_rate": f"{report['saving_rate']:.2f}%" if report["saving_rate"] is not None else "Tidak tersedia",
                 "kategori_pengeluaran": kategori,
                 "nominal_per_kategori": nominal,
                 "kategori_terbesar": report["kategori_terbesar"],
