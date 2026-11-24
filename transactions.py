@@ -62,7 +62,7 @@ def filter_transactions(data, jenis=None):
     return [
         transaksi
         for transaksi in data
-        if transaksi["jenis"] == jenis
+        if transaksi["jenis"].lower() == jenis.lower()
     ]
 
 def display_transactions(data):
