@@ -1,16 +1,10 @@
-from datetime import datetime
+from datetime import date
 
 def input_transaction():
     """Meminta input dan membuat satu data transaksi."""
 
     #1 Input tanggal
-    while True:
-        tanggal = input("Tanggal (YYYY-MM-DD): ")
-        try:
-            datetime.strptime(tanggal, "%Y-%m-%d")
-            break
-        except ValueError:
-            print("Format tanggal tidak valid. Contoh: 2026-11-22")
+    tanggal = date.today().isoformat()
 
     #2 Input jenis transaksi
     while True:
