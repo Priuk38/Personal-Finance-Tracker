@@ -75,7 +75,6 @@ def export_monthly_report(report):
         "saving_rate",
         "kategori_pengeluaran",
         "nominal_per_kategori",
-        "kategori_pengeluaran",
         "kategori_terbesar"
     ]
 
@@ -94,7 +93,7 @@ def export_monthly_report(report):
                 "total_pemasukan": report["total_pemasukan"],
                 "total_pengeluaran": report["total_pengeluaran"],
                 "saldo": report["saldo"],
-                "saving_rate": report["saving_rate"],
+                "saving_rate": f"{report['saving_rate']:.2f}%" if report["saving_rate"] is not None else "Tidak tersedia",
                 "kategori_pengeluaran": kategori,
                 "nominal_per_kategori": nominal,
                 "kategori_terbesar": report["kategori_terbesar"],

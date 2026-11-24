@@ -64,10 +64,7 @@ def generate_monthly_report(data, month, year):
 
     #Menghitung saving rate
     if total_income > 0:
-        saving_rate = (
-            (total_income - total_expense) 
-            / total_income
-        ) * 100
+        saving_rate = round(((total_income - total_expense) / total_income) * 100, 2)
     else:
         saving_rate = None
 
