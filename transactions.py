@@ -84,11 +84,5 @@ def display_transactions(data):
         print("-" * 75)
 
 def get_recent_transactions(data, limit=5):
-    return data[-limit:][::-1]
     """Mengambil beberapa transaksi terbaru."""
-    sorted_data = sorted(
-        data,
-        key=lambda transaksi: transaksi["tanggal"],
-        reverse=True
-    )
-    return sorted_data[:limit]
+    return data[-limit:][::-1]

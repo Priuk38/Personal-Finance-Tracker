@@ -16,6 +16,7 @@ if not errorlevel 1 goto use_python
 
 echo Python tidak ditemukan!
 echo Pastikan Python sudah terinstal.
+goto selesai
 
 :use_py
 py -3 main.py

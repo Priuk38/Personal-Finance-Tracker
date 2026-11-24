@@ -38,7 +38,7 @@ def load_transactions():
                 row["nominal"] = int(row["nominal"])
                 transactions.append(row)
             except (ValueError, KeyError, TypeError):
-                print("Peringatab: Ada baris CSV yang tidak valid.")
+                print("Peringatan: Ada baris CSV yang tidak valid.")
     return transactions
 
 def save_transactions(data):

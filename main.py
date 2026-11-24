@@ -131,7 +131,7 @@ def main():
         elif pilihan == "4":
             export_transactions(data)
         elif pilihan == "5":
-            report = show_monthly_report (data)
+            report = show_monthly_report(data)
             if report is not None:
                 export_monthly_report(report)
         elif pilihan == "0":
